@@ -40,12 +40,12 @@ The Transparent Proxy Pattern builds on the standard Proxy approach but introduc
 - When a user interacts with the Proxy, the contract forwards the call through delegatecall to the Implementation Contract, exactly as in the basic Proxy Pattern.
 - When the admin interacts with the Proxy, the call is not delegated. Instead, the Proxy exposes its own internal functions that allow upgrading the implementation.
 
-✅​ Pros
+✅​ **Pros**
 
 - Implementation can always be upgraded through the Proxy.
 - Clear separation between admin operations and user logic.
 
-❌​ Cons
+❌​ **Cons**
 
 - Higher gas and deployment costs.
 - The admin cannot interact with the protocol as a regular user.
@@ -59,13 +59,13 @@ User interactions are forwarded through delegatecall, and the Proxy holds all th
 The difference is that the Implementation Contract itself contains the `upgradeTo()` function inherited from OpenZeppelin's `UUPSUpgradeable` component , which is responsible for updating the implementation address.
 With this design, the admin can interact with the protocol as a normal user because all calls pass through the Proxy and reach the Implementation via delegatecall.
 
-✅​ Pros
+✅​ **Pros**
 
 - The admin can interact with the protocol like any other user.
 - Simpler Proxy and potentially more gas-efficient upgrades.
 - Upgrade logic is modular and contained within the implementation.
 
-❌​ Cons
+❌​ **Cons**
 
 - Forgetting to inherit from the upgradeable base contract results in a non-upgradeable implementation.
 
@@ -79,12 +79,12 @@ Each Proxy still uses `delegatecall` to execute the logic, but the pointer to th
 
 This pattern is especially useful for systems that deploy many similar contracts, such as tokenized assets, factory-created ERC721s, or repeated protocol instances, where a single upgrade operation should apply to all of them simultaneously.
 
-✅​ Pros
+✅​ **Pros**
 
 - Highly efficient when upgrading multiple Proxy Contracts at the same time.
 - Reduces operational overhead by requiring only one upgrade transaction.
 
-❌ Cons
+❌ **Cons**
 
 - Introduces an additional layer that can act as a centralized point of failure.
 - More complex architecture that requires careful security review.
