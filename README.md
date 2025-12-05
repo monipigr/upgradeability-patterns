@@ -1,6 +1,6 @@
 # Upgradeability patterns
 
-This guide introduces the main upgradeability patterns in smart contracts — Transparent Proxy, UUPS, and Beacon — outlining their core mechanisms, advantages, and risks to help you understand how each approach enables safe and flexible contract upgrades.
+This guide introduces the main upgradeability patterns in smart contracts — **Transparent Proxy Pattern, UUPS, and Beacon Pattern** — outlining their core mechanisms, advantages, and risks to help you understand how each approach enables safe and flexible contract upgrades.
 
 ## What are upgradeability patterns?
 
