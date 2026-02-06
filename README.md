@@ -109,7 +109,7 @@ This pattern separates each logic function implementation into different contrac
 
 ## Resources
 
-- [Upgradeable Smart Contracts](https://www.cyfrin.io/blog/upgradeable-proxy-smart-contract-pattern/)
+- [Upgradeable Smart Contracts by Cyfrin](https://www.cyfrin.io/blog/upgradeable-proxy-smart-contract-pattern/)
 - [Upgradeability in Smart Contracts](https://scsfg.io/developers/upgradeability/)
 - [Smart contract proxy utilities and implementations (OZ)](https://docs.openzeppelin.com/contracts/4.x/api/proxy)
 - [Transparent Proxy Pattern (OZ)](https://docs.openzeppelin.com/contracts/4.x/api/proxy)
