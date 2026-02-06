@@ -91,6 +91,10 @@ This pattern is especially useful for systems that deploy many similar contracts
 
 <img src="./img/beacon_pattern.png" width="400"/>
 
+## Beacon Proxy Pattern
+
+<img src="./img/diamond-pattern.png" width="400">
+
 ## Resources
 
 - [Upgradeability in Smart Contracts](https://scsfg.io/developers/upgradeability/)
