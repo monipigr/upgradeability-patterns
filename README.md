@@ -91,12 +91,25 @@ This pattern is especially useful for systems that deploy many similar contracts
 
 <img src="./img/beacon_pattern.png" width="400"/>
 
-## Beacon Proxy Pattern
+## Diamond Pattern
+
+This pattern separates each logic function implementation into different contracts, known as facets. The proxy contract stores a mapping which associate each function to each facet address. When a user calls a function, the proxy contract checks de mapping and forwards the call to the appropriate facet with the `delegatedcall` low level instruction. This allows to update only the required function without having to redeploy the entire logic contract, saving significants amount of gas.
+
+✅​ **Pros**
+
+- Modular permissions, allowing to upgrade only certains functions instead of the entire logic contract.
+- As functions are splited across multiple logic contracts, 24KB smart contract size limit no longer applies.
+
+❌ **Cons**
+
+- Increases difficulty on developing phase due to the complex architecture.
+- Because of the extra layer of complexity, auditing process increases significantly making them more vulnerable to bugs.
 
 <img src="./img/diamond-pattern.png" width="400">
 
 ## Resources
 
+- [Upgradeable Smart Contracts](https://www.cyfrin.io/blog/upgradeable-proxy-smart-contract-pattern/)
 - [Upgradeability in Smart Contracts](https://scsfg.io/developers/upgradeability/)
 - [Smart contract proxy utilities and implementations (OZ)](https://docs.openzeppelin.com/contracts/4.x/api/proxy)
 - [Transparent Proxy Pattern (OZ)](https://docs.openzeppelin.com/contracts/4.x/api/proxy)
