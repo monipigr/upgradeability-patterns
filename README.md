@@ -69,6 +69,8 @@ With this design, the admin can interact with the protocol as a normal user beca
 
 - Forgetting to inherit from the upgradeable base contract results in a non-upgradeable implementation.
 
+<img src="./img/uups_pattern.png" width="400px" />
+
 ## Beacon Proxy Pattern
 
 The Beacon Proxy Pattern introduces a third component called the **Beacon Contract**, which stores the address of the current Implementation Contract.
