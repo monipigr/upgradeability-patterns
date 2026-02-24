@@ -12,13 +12,29 @@ import {
     OwnableUpgradeable
 } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-contract Logic {
-    uint256 public value;
+contract Logic is Initializable, UUPSUpgradeable, OwnableUpgradeable {
+    uint256 public number;
 
-    function setValue(uint256 _value) public {
-        value = _value;
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
     }
 
-    // upgradeTo() public onlyOwner {
-    // }
+    function initialize(address initialOwner) public initializer {
+        __Ownable_init(initialOwner);
+        // __UUPSUpgradeable_init();
+    }
+
+    // Prevents to upgrade the contract to anybody
+    function _authorizeUpgrade(
+        address newImplementation
+    ) internal override onlyOwner {}
+
+    function setNumber(uint256 newNumber) public {
+        number = newNumber;
+    }
+
+    function increment() public {
+        number++;
+    }
 }
