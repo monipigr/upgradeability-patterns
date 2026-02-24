@@ -117,5 +117,6 @@ This pattern separates each logic function implementation into different contrac
 - [Transparent Proxy Pattern (OZ)](https://docs.openzeppelin.com/contracts/4.x/api/proxy)
 - [UUPS Pattern (EIP-1822)](https://eips.ethereum.org/EIPS/eip-1822)
 - [UUPS Pattern (OZ)](https://docs.openzeppelin.com/contracts-stylus/uups-proxy)
+- [UUPS Pattern Example](https://coinsbench.com/a-quick-dirty-guide-to-smart-contract-upgrades-with-uups-ca1d60415038)
 - [Beacon Pattern (OZ)](https://docs.openzeppelin.com/contracts/4.x/api/proxy#BeaconProxy)
 - [Diamond Pattern (EIP-2535)](https://eips.ethereum.org/EIPS/eip-2535)
