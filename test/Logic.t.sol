@@ -43,4 +43,51 @@ contract LogicTest is Test {
         assertTrue(success);
         assertNotEq(abi.decode(initialOwner, (address)), address(0));
     }
+
+    function test_increment_before_upgrade() public {
+        (bool success, ) = address(proxy).call(
+            abi.encodeWithSignature("increment()")
+        );
+        assertTrue(success);
+
+        (bool success2, bytes memory incrementedNumber) = address(proxy).call(
+            abi.encodeWithSignature("number()")
+        );
+        assertTrue(success2);
+
+        assertEq(incrementedNumber, abi.encodePacked(uint256(6)));
+    }
+
+    function test_upgrade() public {
+        logic2 = new Logic2();
+        (bool success, ) = address(proxy).call(
+            abi.encodeWithSignature(
+                "upgradeToAndCall(address,bytes)",
+                address(logic2),
+                ""
+            )
+        );
+        assertEq(success, true);
+
+        (bool success2, ) = address(proxy).call(
+            abi.encodeWithSignature("initialize(address)", address(this))
+        );
+        assertTrue(success2);
+
+        (bool success3, ) = address(proxy).call(
+            abi.encodeWithSignature("setNumber(uint256)", 5)
+        );
+        assertTrue(success3);
+
+        (bool success4, ) = address(proxy).call(
+            abi.encodeWithSignature("increment()")
+        );
+        assertTrue(success4);
+
+        (bool success5, bytes memory incrementedNumber) = address(proxy).call(
+            abi.encodeWithSignature("number()")
+        );
+        assertTrue(success5);
+        assertEq(incrementedNumber, abi.encodePacked(uint256(10)));
+    }
 }
